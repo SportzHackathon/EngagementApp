@@ -7,7 +7,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import { Container } from "native-base";
-import Home from "./screens/Home";
+import Home from "./app/screens/Home";
 
 export default class App extends Component {
     render() {
