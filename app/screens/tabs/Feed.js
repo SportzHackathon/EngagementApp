@@ -15,7 +15,7 @@ import {
     Text,
     Icon
 } from "native-base";
-import { TextFeedItem, ImageFeedItem, LinkFeedItem } from "../../components/FeedItem";
+import FeedItem from "../../components/FeedItem";
 
 const articles = [
     {
@@ -55,15 +55,9 @@ export default class Feed extends Component {
         return (
             <Container>
                 <ScrollView scrollEnabled={true} bounces={true} style={styles.scrollView}>
-                    {articles.map((article, index) => {
-                        if (article.type === "text") {
-                            return <TextFeedItem article={article} key={index} />;
-                        } else if (article.type === "image") {
-                            return <ImageFeedItem article={article} key={index} />;
-                        } else if (article.type === "link") {
-                            return <LinkFeedItem article={article} key={index} />;
-                        }
-                    })}
+                    {articles.map((article, index) => (
+                        <FeedItem article={article} key={index} />
+                    ))}
                 </ScrollView>
             </Container>
         );
