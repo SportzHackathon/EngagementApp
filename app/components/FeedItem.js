@@ -6,48 +6,58 @@ import React, { Component } from "react";
 import { StyleSheet, Image, TouchableHighlight, Linking } from "react-native";
 import { Text, Card, CardItem, Body } from "native-base";
 
-const TextFeedItem = article => {
+function openArticle(navigation, article) {
+    navigation.navigate("Article", {
+        title: article.title
+    });
+}
+
+const TextFeedItem = props => {
     return (
-        <Card>
-            <CardItem header>
-                <Text>{article.header}</Text>
-            </CardItem>
-            <CardItem>
-                <Body>
-                    <Text>{article.snippet}</Text>
-                </Body>
-            </CardItem>
-            <CardItem footer>
-                <Text>{article.footer}</Text>
-            </CardItem>
-        </Card>
+        <TouchableHighlight onPress={openArticle.bind(this, props.navigation, props.article)}>
+            <Card>
+                <CardItem header>
+                    <Text>{props.article.title}</Text>
+                </CardItem>
+                <CardItem>
+                    <Body>
+                        <Text>{props.article.snippet}</Text>
+                    </Body>
+                </CardItem>
+                <CardItem footer>
+                    <Text>{props.article.footer}</Text>
+                </CardItem>
+            </Card>
+        </TouchableHighlight>
     );
 };
 
-const ImageFeedItem = article => {
+const ImageFeedItem = props => {
     return (
-        <Card>
-            <CardItem header>
-                <Body>
-                    <Text>{article.header}</Text>
-                    <Text note>{article.snippet}</Text>
-                </Body>
-            </CardItem>
-            <CardItem cardBody>
-                <Image
-                    source={{ uri: article.imageUrl }}
-                    style={{ height: 200, width: null, flex: 1 }}
-                />
-            </CardItem>
-        </Card>
+        <TouchableHighlight onPress={openArticle.bind(this, props.navigation, props.article)}>
+            <Card>
+                <CardItem header>
+                    <Body>
+                        <Text>{props.article.title}</Text>
+                        <Text note>{props.article.snippet}</Text>
+                    </Body>
+                </CardItem>
+                <CardItem cardBody>
+                    <Image
+                        source={{ uri: props.article.imageUrl }}
+                        style={{ height: 200, width: null, flex: 1 }}
+                    />
+                </CardItem>
+            </Card>
+        </TouchableHighlight>
     );
 };
 
-const LinkFeedItem = article => {
+const LinkFeedItem = props => {
     return (
         <TouchableHighlight
             onPress={() => {
-                Linking.openURL(article.linkUrl).catch(err =>
+                Linking.openURL(props.article.linkUrl).catch(err =>
                     console.error("An error occurred", err)
                 );
             }}
@@ -55,13 +65,13 @@ const LinkFeedItem = article => {
             <Card>
                 <CardItem header>
                     <Body>
-                        <Text>{article.header}</Text>
-                        <Text note>{article.snippet || "video"}</Text>
+                        <Text>{props.article.title}</Text>
+                        <Text note>{props.article.snippet || "video"}</Text>
                     </Body>
                 </CardItem>
                 <CardItem cardBody>
                     <Image
-                        source={{ uri: article.imageUrl }}
+                        source={{ uri: props.article.imageUrl }}
                         style={{ height: 200, width: null, flex: 1 }}
                     />
                 </CardItem>
@@ -73,11 +83,11 @@ const LinkFeedItem = article => {
 export default class FeedItem extends Component {
     render() {
         if (this.props.article.type === "text") {
-            return TextFeedItem(this.props.article);
+            return TextFeedItem(this.props);
         } else if (this.props.article.type === "image") {
-            return ImageFeedItem(this.props.article);
+            return ImageFeedItem(this.props);
         } else if (this.props.article.type === "link") {
-            return LinkFeedItem(this.props.article);
+            return LinkFeedItem(this.props);
         }
     }
 }
