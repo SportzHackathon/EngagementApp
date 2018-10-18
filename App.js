@@ -10,6 +10,7 @@ import { Container } from "native-base";
 import { createStackNavigator } from "react-navigation";
 import Home from "./app/screens/Home";
 import Article from "./app/screens/Article";
+import Poll from "./app/screens/Poll";
 
 const screens = {
     Home: {
@@ -20,6 +21,9 @@ const screens = {
     },
     Article: {
         screen: Article
+    },
+    Poll: {
+        screen: Poll
     }
 };
 

@@ -51,6 +51,12 @@ const articles = [
         ]
     },
     {
+        type: "poll",
+        content:
+            "Incididunt enim velit occaecat anim velit tempor proident. Id id officia sint magna officia excepteur aliquip est. Lorem reprehenderit ipsum duis Lorem. Anim anim officia incididunt mollit sint sit sint enim amet dolore tempor elit aliqua.?",
+        options: ["Yes", "No"]
+    },
+    {
         type: "text",
         title: "Beautiful day in the neighborhood",
         snippet: "Bobby Dodd is looking awfully nice tonight mkay",
