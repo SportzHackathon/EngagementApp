@@ -8,7 +8,7 @@ import { Text, Card, CardItem, Body } from "native-base";
 
 function openArticle(navigation, article) {
     navigation.navigate("Article", {
-        title: article.title
+        article
     });
 }
 
