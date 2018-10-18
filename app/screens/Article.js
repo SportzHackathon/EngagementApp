@@ -27,6 +27,12 @@ export default class Article extends Component {
                         {displayObject.content}
                     </Title>
                 );
+            } else if (displayObject.type === "header") {
+                return (
+                    <Title style={styles.articleHeader} key={index}>
+                        {displayObject.content}
+                    </Title>
+                );
             } else if (displayObject.type === "text") {
                 return (
                     <Text style={styles.articleText} key={index}>
@@ -69,12 +75,19 @@ export default class Article extends Component {
 
 const articleMargin = 20;
 const paragraphMargin = 10;
+const textMargin = 8;
 
 const styles = StyleSheet.create({
     articleTitle: {
         ...material.headlineObject,
         ...systemWeights.bold,
         margin: articleMargin
+    },
+    articleHeader: {
+        ...material.titleObject,
+        ...systemWeights.semibold,
+        fontSize: 20,
+        textAlign: "left"
     },
     articleParagraph: {
         marginTop: paragraphMargin,
@@ -84,7 +97,7 @@ const styles = StyleSheet.create({
     },
     articleText: {
         lineHeight: 24,
-        fontFamily: ""
+        marginBottom: textMargin
     },
     articleBody: {
         display: "flex",

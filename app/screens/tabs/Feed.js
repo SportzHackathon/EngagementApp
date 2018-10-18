@@ -13,7 +13,11 @@ const articles = [
         title: "Tech Wins 69-1!",
         snippet: "What a great game and a damn good score.",
         content: [
-            { type: "title", content: "Title" },
+            { type: "title", content: "Tech Wins 69-1!" },
+            {
+                type: "paragraph",
+                content: { type: "text", content: "What a great game and a damn good score." }
+            },
             {
                 type: "image",
                 content:
@@ -25,18 +29,19 @@ const articles = [
                     {
                         type: "text",
                         content:
-                            "Well bob, you saw what it said. What a great game and a damn good score."
+                            "Well bob, you saw what it said. What a great game and a damn good score. Officia nulla anim nulla ipsum veniam quis sunt. Exercitation laboris excepteur elit laborum aliqua anim sunt amet labore cupidatat qui aliquip. Deserunt do magna eu cupidatat sunt. Magna fugiat et labore est reprehenderit cupidatat sit ad cupidatat."
                     },
                     {
                         type: "text",
                         content:
-                            "Part 2 of this paragraph. FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+                            "Part 2 of this paragraph. FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO. Pariatur aute est commodo proident aute enim aliquip veniam cupidatat pariatur incididunt amet nisi sint. Deserunt proident dolore laboris deserunt deserunt labore cillum proident veniam proident excepteur in elit. In laborum consectetur ad dolore incididunt dolore. Nisi do labore reprehenderit consectetur culpa ut non in tempor anim Lorem."
                     }
                 ]
             },
             {
                 type: "paragraph",
                 content: [
+                    { type: "header", content: "P2 Heading" },
                     {
                         type: "text",
                         content: "Paragraph 2 baby. Look at me!!!!!!!!!!!!!!!!!!!!!!!."
