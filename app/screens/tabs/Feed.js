@@ -9,6 +9,7 @@ import FeedItem from "../../components/FeedItem";
 
 const articles = [
     {
+        id: 1,
         type: "text",
         title: "Tech Wins 69-1!",
         snippet: "What a great game and a damn good score.",
@@ -51,18 +52,23 @@ const articles = [
         ]
     },
     {
+        id: 2,
         type: "poll",
         content:
             "Incididunt enim velit occaecat anim velit tempor proident. Id id officia sint magna officia excepteur aliquip est. Lorem reprehenderit ipsum duis Lorem. Anim anim officia incididunt mollit sint sit sint enim amet dolore tempor elit aliqua.?",
-        options: ["Yes", "No"]
+        options: ["Yes", "No"],
+        alreadyVoted: false,
+        votes: [50, 20]
     },
     {
+        id: 3,
         type: "text",
         title: "Beautiful day in the neighborhood",
         snippet: "Bobby Dodd is looking awfully nice tonight mkay",
         content: "Well bob, you saw what it said. Bobby Dodd is looking awfully nice tonight mkay"
     },
     {
+        id: 4,
         type: "image",
         title: "Beautiful day in the neighborhood",
         snippet: "Bobby Dodd is looking awfully nice tonight mkay",
@@ -71,6 +77,7 @@ const articles = [
             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/BobbyDoddStadiumGTMiami2008.jpg/1200px-BobbyDoddStadiumGTMiami2008.jpg"
     },
     {
+        id: 5,
         type: "link",
         title: "A miracle has occurred!",
         imageUrl: "http://nique.net/wp-content/uploads/2015/10/FSU-Game-Online2.jpg",
@@ -83,6 +90,14 @@ export default class Feed extends Component {
         title: "Game Day Feed"
     };
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            articles
+        };
+    }
+
     render() {
         return (
             <Container>
@@ -93,11 +108,16 @@ export default class Feed extends Component {
                     </Body>
                 </Header>
                 <ScrollView scrollEnabled={true} bounces={true} style={styles.scrollView}>
-                    {articles.map((article, index) => (
+                    {this.state.articles.map((article, index) => (
                         <FeedItem
                             article={article}
                             key={index}
                             navigation={this.props.navigation}
+                            onVote={option => {
+                                this.state.articles[index].alreadyVoted = true;
+                                this.setState({ articles: this.state.articles });
+                                console.log("Voted for: " + article.options[option]);
+                            }}
                         />
                     ))}
                 </ScrollView>

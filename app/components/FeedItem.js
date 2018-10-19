@@ -103,7 +103,8 @@ const PollFeedItem = props => {
                         onPress={() => {
                             console.log(props);
                             props.navigation.navigate("Poll", {
-                                article: props.article
+                                article: props.article,
+                                onVote: props.onVote
                             });
                         }}
                         success
@@ -111,7 +112,7 @@ const PollFeedItem = props => {
                         small
                         style={{ marginTop: 8 }}
                     >
-                        <Text>Vote!</Text>
+                        <Text>{props.article.alreadyVoted ? "View" : "Vote!"}</Text>
                     </Button>
                 </Body>
             </CardItem>
