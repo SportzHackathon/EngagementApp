@@ -54,11 +54,12 @@ const articles = [
     {
         id: 2,
         type: "poll",
-        content:
-            "Incididunt enim velit occaecat anim velit tempor proident. Id id officia sint magna officia excepteur aliquip est. Lorem reprehenderit ipsum duis Lorem. Anim anim officia incididunt mollit sint sit sint enim amet dolore tempor elit aliqua.?",
-        options: ["Yes", "No"],
+        content: "Should we run the triple option again/every? Hmmmmmmm",
+        options: ["Yes", "No", "Always", "Never again."],
         alreadyVoted: false,
-        votes: [50, 20]
+        votes: [60, 20, 20, 0],
+        imageUrl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/64px-Google_Chrome_icon_%28September_2014%29.svg.png"
     },
     {
         id: 3,
