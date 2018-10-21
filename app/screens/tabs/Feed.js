@@ -103,7 +103,6 @@ export default class Feed extends Component {
         return (
             <Container>
                 <Header>
-                    <Left />
                     <Body>
                         <Title>Game day feed</Title>
                     </Body>
