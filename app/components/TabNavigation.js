@@ -4,6 +4,7 @@
 import { createBottomTabNavigator } from "react-navigation";
 import React from "react";
 import { Footer, FooterTab, Button, Text, Icon } from "native-base";
+import colors from "../styles/colors";
 
 export default tabs => {
     return createBottomTabNavigator(tabs, {
@@ -13,6 +14,7 @@ export default tabs => {
                 <Footer>
                     <FooterTab>
                         <Button
+                            style={{ backgroundColor: colors.headerColor }}
                             active={props.navigation.state.index === 0}
                             onPress={() => {
                                 props.navigation.navigate("Feed");
@@ -22,6 +24,7 @@ export default tabs => {
                             <Text>Feed</Text>
                         </Button>
                         <Button
+                            style={{ backgroundColor: colors.headerColor }}
                             active={props.navigation.state.index === 1}
                             onPress={() => {
                                 props.navigation.navigate("Map");
@@ -31,6 +34,7 @@ export default tabs => {
                             <Text>Map</Text>
                         </Button>
                         <Button
+                            style={{ backgroundColor: colors.headerColor }}
                             active={props.navigation.state.index === 2}
                             onPress={() => {
                                 props.navigation.navigate("Shop");
@@ -40,6 +44,7 @@ export default tabs => {
                             <Text>Shop</Text>
                         </Button>
                         <Button
+                            style={{ backgroundColor: colors.headerColor }}
                             active={props.navigation.state.index === 3}
                             onPress={() => {
                                 props.navigation.navigate("Rewards");

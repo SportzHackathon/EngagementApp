@@ -1,19 +1,20 @@
 /**
- * Feed tab. Holds the game day feed
+ * Creates tab navigation
  */
+import { createMaterialTopTabNavigator } from "react-navigation";
+import MySeat from "./mapTabs/MySeat";
+import Locations from "./mapTabs/Locations";
+import Traffic from "./mapTabs/Traffic";
+import colors from "../../styles/colors";
 
-import React, { Component } from "react";
-import { StyleSheet } from "react-native";
-import { Container, Header, Content, Footer, FooterTab, Button, Text, Icon } from "native-base";
+const tabs = {
+    MySeat: { screen: MySeat },
+    Locations: { screen: Locations },
+    Traffic: { screen: Traffic }
+};
 
-export default class Map extends Component {
-    render() {
-        return (
-            <Container>
-                <Text>Test Map</Text>
-            </Container>
-        );
+export default createMaterialTopTabNavigator(tabs, {
+    tabBarOptions: {
+        tabStyle: { backgroundColor: colors.headerColor }
     }
-}
-
-const styles = StyleSheet.create({});
+});

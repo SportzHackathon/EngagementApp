@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import { Container, Header, Body, Title, Left } from "native-base";
 import FeedItem from "../../components/FeedItem";
+import colors from "../../styles/colors";
 
 const articles = [
     {
@@ -102,8 +103,7 @@ export default class Feed extends Component {
     render() {
         return (
             <Container>
-                <Header>
-                    <Left />
+                <Header style={{ backgroundColor: colors.headerColor }}>
                     <Body>
                         <Title>Game day feed</Title>
                     </Body>
