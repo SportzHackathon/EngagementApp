@@ -15,6 +15,8 @@ const tabs = {
 
 export default createMaterialTopTabNavigator(tabs, {
     tabBarOptions: {
-        tabStyle: { backgroundColor: colors.headerColor }
+        style: {
+            backgroundColor: colors.headerColor
+        }
     }
 });
