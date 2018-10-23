@@ -82,7 +82,7 @@ const LinkFeedItem = props => {
 
 const PollFeedItem = props => {
     return (
-        <Card>
+        <Card style={{ zIndex: 0 }}>
             <CardItem header>
                 <Text>Poll</Text>
             </CardItem>

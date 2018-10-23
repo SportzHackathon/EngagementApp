@@ -4,9 +4,10 @@
 
 import React, { Component } from "react";
 import { StyleSheet, ScrollView } from "react-native";
-import { Container, Header, Body, Title, Left } from "native-base";
+import { Container, Header, Body, Title, Text } from "native-base";
 import FeedItem from "../../components/FeedItem";
 import colors from "../../styles/colors";
+import { material } from "react-native-typography";
 
 const articles = [
     {
@@ -103,12 +104,17 @@ export default class Feed extends Component {
     render() {
         return (
             <Container>
-                <Header style={{ backgroundColor: colors.headerColor }}>
-                    <Body>
-                        <Title>Game day feed</Title>
-                    </Body>
-                </Header>
                 <ScrollView scrollEnabled={true} bounces={true} style={styles.scrollView}>
+                    <Text
+                        style={{
+                            padding: 20,
+                            alignSelf: "flex-start",
+                            ...material.headlineObject,
+                            color: colors.headerText
+                        }}
+                    >
+                        Game day feed
+                    </Text>
                     {this.state.articles.map((article, index) => (
                         <FeedItem
                             article={article}

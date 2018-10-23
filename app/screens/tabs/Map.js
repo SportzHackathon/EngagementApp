@@ -1,22 +1,49 @@
 /**
  * Creates tab navigation
  */
-import { createMaterialTopTabNavigator } from "react-navigation";
-import MySeat from "./mapTabs/MySeat";
-import Locations from "./mapTabs/Locations";
-import Traffic from "./mapTabs/Traffic";
+
+import React, { Component } from "react";
+import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Header, Title, Body, Container, Text } from "native-base";
+import BottomSlideUpContent from "../../components/BottomSlideUpContent";
 import colors from "../../styles/colors";
 
-const tabs = {
-    MySeat: { screen: MySeat },
-    Locations: { screen: Locations },
-    Traffic: { screen: Traffic }
-};
+export default class Map extends Component {
+    render() {
+        return (
+            <Container>
+                <Header style={{ backgroundColor: colors.headerColor }}>
+                    <Body>
+                        <Title style={{ color: colors.headerText }}>Map and guidance</Title>
+                    </Body>
+                </Header>
+                <TouchableWithoutFeedback
+                    onPress={() => {
+                        this.retractTab();
+                    }}
+                >
+                    <View style={{ flex: 1 }}>
+                        <Text>Map (Main content)</Text>
+                    </View>
+                </TouchableWithoutFeedback>
 
-export default createMaterialTopTabNavigator(tabs, {
-    tabBarOptions: {
-        style: {
-            backgroundColor: colors.headerColor
-        }
+                <BottomSlideUpContent
+                    downHeight={120}
+                    upPercentage={0.6}
+                    downController={retractTab => {
+                        this.retractTab = retractTab;
+                    }}
+                >
+                    <Container>
+                        <Text>
+                            List of locations (This is the content of the view that slides up and
+                            down)
+                        </Text>
+                    </Container>
+                </BottomSlideUpContent>
+            </Container>
+        );
     }
-});
+}
+
+const styles = StyleSheet.create({});
