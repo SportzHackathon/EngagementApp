@@ -15,10 +15,10 @@ export default tabs => {
                 <Footer
                     style={{
                         borderWidth: 1,
-                        borderRadius: 2,
                         borderColor: "#ddd",
                         borderBottomWidth: 0,
-                        borderLeftWidth: 0
+                        borderLeftWidth: 0,
+                        borderRightWidth: 0
                     }}
                 >
                     <FooterTab>

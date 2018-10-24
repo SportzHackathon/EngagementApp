@@ -5,7 +5,8 @@ let colors = {
     black: "#000",
     gold: "#EAAA00",
     darkGray: "#545454",
-    gray: "#808080"
+    gray: "#808080",
+    lightGray: "#E5E5E5"
 };
 
 colors.headerColor = colors.white;
