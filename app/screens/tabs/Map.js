@@ -3,13 +3,16 @@
  */
 
 import React, { Component } from "react";
-import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Dimensions, Image, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Header, Title, Body, Container, Text } from "native-base";
 import BottomSlideUpContent from "../../components/BottomSlideUpContent";
 import colors from "../../styles/colors";
+import locations from "../../data/map/Map";
+import ImageZoom from "react-native-image-pan-zoom";
 
 export default class Map extends Component {
     render() {
+        let { width, height } = Dimensions.get("window");
         return (
             <Container>
                 <Header style={{ backgroundColor: colors.headerColor }}>
@@ -23,12 +26,27 @@ export default class Map extends Component {
                     }}
                 >
                     <View style={{ flex: 1 }}>
-                        <Text>Map (Main content)</Text>
+                        <ImageZoom
+                            cropWidth={width}
+                            cropHeight={320}
+                            imageWidth={width}
+                            imageHeight={320}
+                            minScale={1}
+                            style={{ position: "absolute", top: 10, height: "100%" }}
+                            onClick={() => {
+                                this.retractTab();
+                            }}
+                        >
+                            <Image
+                                source={locations[0].map}
+                                style={{ height: 320, width: width }}
+                            />
+                        </ImageZoom>
                     </View>
                 </TouchableWithoutFeedback>
 
                 <BottomSlideUpContent
-                    downHeight={120}
+                    downHeight={217}
                     upPercentage={0.6}
                     downController={retractTab => {
                         this.retractTab = retractTab;

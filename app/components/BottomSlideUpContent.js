@@ -15,7 +15,7 @@ import colors from "../styles/colors";
 
 const downHeight = 120;
 const upPercentage = 0.6;
-const animationTime = 250;
+const animationTime = 100;
 
 export default class BottomSlideUpContent extends Component {
     constructor(props) {
