@@ -72,6 +72,12 @@ export default class BottomSlideUpContent extends Component {
                                 toValue: height * this.upPercentage,
                                 timing: animationTime
                             }).start();
+                        } else {
+                            this.setState({ down: true });
+                            Animated.timing(this.state.currentHeight, {
+                                toValue: this.downHeight,
+                                timing: animationTime
+                            }).start();
                         }
                     }}
                 >
