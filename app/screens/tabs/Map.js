@@ -53,10 +53,32 @@ export default class Map extends Component {
                     }}
                 >
                     <Container>
-                        <Text>
-                            List of locations (This is the content of the view that slides up and
-                            down)
-                        </Text>
+                        <List>
+                            <ListItem noIndent style={{ backgroundColor: "#cde1f9" }}>
+                                <Left>
+                                    <Text>Simon Mignolet</Text>
+                                </Left>
+                                <Right>
+                                    <Icon name="arrow-forward" />
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text>Nathaniel Clyne</Text>
+                                </Left>
+                                <Right>
+                                    <Icon name="arrow-forward" />
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text>Dejan Lovren</Text>
+                                </Left>
+                                <Right>
+                                    <Icon name="arrow-forward" />
+                                </Right>
+                            </ListItem>
+                        </List>
                     </Container>
                 </BottomSlideUpContent>
             </Container>

@@ -1,7 +1,7 @@
 let locations = [
     {
         id: 1,
-        type: "MySeat",
+        type: "section",
         src: "Gate 4",
         des: "Section 108",
         steps: [
@@ -14,7 +14,7 @@ let locations = [
     },
     {
         id: 2,
-        type: "MySeat",
+        type: "section",
         src: "Gate 8",
         des: "Section 223",
         steps: [
@@ -30,7 +30,7 @@ let locations = [
     },
     {
         id: 3,
-        type: "OtherSeat",
+        type: "section",
         src: "Section 109",
         des: "Section 102",
         steps: [
@@ -45,7 +45,7 @@ let locations = [
     },
     {
         id: 4,
-        type: "OtherSeat",
+        type: "section",
         src: "Section 217",
         des: "Section 210",
         steps: [
@@ -61,7 +61,7 @@ let locations = [
     },
     {
         id: 5,
-        type: "Location",
+        type: "food",
         src: "Section 217",
         des: "Chick-fil-A",
         steps: [
@@ -75,7 +75,7 @@ let locations = [
     },
     {
         id: 6,
-        type: "Location",
+        type: "food",
         src: "Section 109",
         des: "Twisted Taco",
         steps: [
