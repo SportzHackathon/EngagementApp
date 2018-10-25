@@ -1,5 +1,11 @@
 let locations = [
     {
+        id: 0,
+        type: "blank",
+        map: require("./blank.jpg")
+    },
+
+    {
         id: 1,
         type: "section",
         src: "Gate 4",
@@ -10,7 +16,7 @@ let locations = [
             "Turn left into sections 108 - 109",
             "Turn right into section 108"
         ],
-        map: require("./map1.jpg")
+        map: require("./map01.jpg")
     },
     {
         id: 2,
@@ -26,7 +32,7 @@ let locations = [
             "Turn left into sections 222 - 223",
             "Turn right into section 223"
         ],
-        map: require("./map2.jpg")
+        map: require("./map02.jpg")
     },
     {
         id: 3,
@@ -41,7 +47,7 @@ let locations = [
             "Turn left into sections 102 - 103",
             "Turn right into section 102"
         ],
-        map: require("./map3.jpg")
+        map: require("./map03.jpg")
     },
     {
         id: 4,
@@ -57,7 +63,7 @@ let locations = [
             "Continue past section 211",
             "Continue into section 210"
         ],
-        map: require("./map4.jpg")
+        map: require("./map04.jpg")
     },
     {
         id: 5,
@@ -71,7 +77,7 @@ let locations = [
             "Continue past section 215",
             "Chick fil A is on the left hand side"
         ],
-        map: require("./map5.jpg")
+        map: require("./map05.jpg")
     },
     {
         id: 6,
@@ -83,7 +89,33 @@ let locations = [
             "Turn left",
             "Turn left into sections 106 - 107",
             "Twisted Taco is on the left hand side"
-        ]
+        ],
+        map: require("./map06.jpg")
+    },
+
+    {
+        id: 7,
+        type: "section_pin",
+        des: "Section 108",
+        map: require("./map07.jpg")
+    },
+    {
+        id: 8,
+        type: "section_pin",
+        des: "Section 223",
+        map: require("./map08.jpg")
+    },
+    {
+        id: 9,
+        type: "food_pin",
+        des: "Chick-fil-A",
+        map: require("./map09.jpg")
+    },
+    {
+        id: 10,
+        type: "food_pin",
+        des: "Twisted Taco",
+        map: require("./map10.jpg")
     }
 ]; // TODO: pins to drop for food -> need more information on how to map to pixel
 
