@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Container, Header, Title, Body, FooterTab, Button, Text, Icon } from "native-base";
 import colors from "../../styles/colors";
 
@@ -17,7 +17,7 @@ export default class Rewards extends Component {
                     </Body>
                 </Header>
                 <View>
-                    
+
                 </View>
             </Container>
         );
