@@ -35,7 +35,7 @@ export default class Map extends Component {
             <Container>
                 <Header style={{ backgroundColor: colors.headerColor }}>
                     <Body>
-                        <Title style={{ color: colors.headerText }}>Map and guidance</Title>
+                        <Title style={{ color: colors.headerText }}>Map and Guidance</Title>
                     </Body>
                 </Header>
                 <TouchableWithoutFeedback

@@ -113,7 +113,7 @@ export default class Feed extends Component {
                             color: colors.headerText
                         }}
                     >
-                        Game day feed
+                        Game Day Feed
                     </Text>
                     {this.state.articles.map((article, index) => (
                         <FeedItem
