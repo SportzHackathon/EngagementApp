@@ -11,6 +11,7 @@ import { createStackNavigator } from "react-navigation";
 import Home from "./app/screens/Home";
 import Article from "./app/screens/Article";
 import Poll from "./app/screens/Poll";
+import Store from "./app/screens/Store";
 
 const screens = {
     Home: {
@@ -24,6 +25,9 @@ const screens = {
     },
     Poll: {
         screen: Poll
+    },
+    Store: {
+        screen: Store
     }
 };
 
