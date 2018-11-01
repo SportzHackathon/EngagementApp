@@ -16,27 +16,27 @@ const foodShops = [
         items: [
             {
                 name: "Chicken Sandwich",
-                amount: "3.52"
+                amount: 3.52
             },
             {
                 name: "8 count Chicken Nuggets",
-                amount: "6.32"
+                amount: 6.32
             }
         ]
     },
     {
         name: "Burdell's",
-        options: ["Delivery", "Pickup"],
+        options: [{ name: "Delivery", upCharge: 0.99 }, { name: "Pickup", upCharge: 0 }],
         imgUrl:
             "http://ramblinwreck.com/wp-content/uploads/2018/08/STH-Concession-Discount-300x300.png",
         items: [
             {
                 name: "Hot dog",
-                amount: "3"
+                amount: 3
             },
             {
                 name: "Pretzel",
-                amount: "2"
+                amount: 2
             }
         ]
     }
@@ -100,7 +100,9 @@ export default class Shop extends Component {
                                                     color: colors.gray
                                                 }}
                                             >
-                                                ({food.options.join(", ")})
+                                                (
+                                                {food.options.map(option => option.name).join(", ")}
+                                                )
                                             </Text>
                                         ) : (
                                             <View />

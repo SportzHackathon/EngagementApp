@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { Fab, Root, Container, Icon, Toast } from "native-base";
 import colors from "../styles/colors";
 
-export default class Article extends Component {
+export default class Store extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: navigation.state.params.store.name,
@@ -19,11 +19,17 @@ export default class Article extends Component {
         };
     }
 
+    updateItems(items) {
+        this.setState({ items });
+    }
+
     render() {
         let { navigation } = this.props;
         let { store } = navigation.state.params;
 
         let canBuy = store.options.length > 0;
+
+        console.log(this.state.items);
         return (
             <Root>
                 <Container>
@@ -37,6 +43,10 @@ export default class Article extends Component {
                                             text: "Added item to cart",
                                             duration: 1500
                                         });
+
+                                        var items = this.state.items;
+                                        items.push(item);
+                                        this.setState({ items });
                                     }
                                 }}
                             >
@@ -94,12 +104,21 @@ export default class Article extends Component {
                     {canBuy ? (
                         <Fab
                             active={this.state.items.length > 0}
-                            style={{ backgroundColor: colors.gold }}
+                            style={{
+                                backgroundColor:
+                                    this.state.items.length > 0 ? colors.gold : colors.lightGray
+                            }}
                             position="bottomRight"
                         >
                             <TouchableOpacity
                                 onPress={() => {
-                                    console.log("Checkout");
+                                    if (this.state.items.length > 0) {
+                                        navigation.navigate("Checkout", {
+                                            items: this.state.items,
+                                            store,
+                                            updateItems: this.updateItems.bind(this)
+                                        });
+                                    }
                                 }}
                             >
                                 <Icon
