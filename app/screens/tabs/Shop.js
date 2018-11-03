@@ -10,7 +10,7 @@ import { material } from "react-native-typography";
 
 const foodShops = [
     {
-        name: "ChickFilA",
+        name: "Chick-Fil-A",
         options: [],
         imgUrl: "https://pbs.twimg.com/profile_images/458694452551229440/FhyI8Y50_400x400.png",
         items: [

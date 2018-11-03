@@ -3,10 +3,10 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { Fab, Root, Container, Icon, Toast } from "native-base";
 import colors from "../styles/colors";
 
-export default class Store extends Component {
+export default class RewardCategory extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.state.params.store.name,
+            title: navigation.state.params.category.name,
             headerMode: "screen"
         };
     };
@@ -25,28 +25,24 @@ export default class Store extends Component {
 
     render() {
         let { navigation } = this.props;
-        let { store } = navigation.state.params;
-
-        let canBuy = store.options.length > 0;
+        let { category } = navigation.state.params;
 
         return (
             <Root>
                 <Container>
                     <ScrollView>
-                        {store.items.map((item, index) => (
+                        {category.items.map((item, index) => (
                             <TouchableOpacity
                                 key={index}
                                 onPress={() => {
-                                    if (canBuy) {
-                                        Toast.show({
-                                            text: "Added item to cart",
-                                            duration: 1500
-                                        });
+                                    Toast.show({
+                                        text: "Bought item",
+                                        duration: 1500
+                                    });
 
-                                        var items = this.state.items;
-                                        items.push(item);
-                                        this.setState({ items });
-                                    }
+                                    var items = this.state.items;
+                                    items.push(item);
+                                    this.setState({ items });
                                 }}
                             >
                                 <View
@@ -81,26 +77,22 @@ export default class Store extends Component {
                                                 paddingRight: 5
                                             }}
                                         >
-                                            ${item.amount}
+                                            Points {item.points}
                                         </Text>
-                                        {canBuy ? (
-                                            <Icon
-                                                style={{
-                                                    fontSize: 20,
-                                                    color: colors.lightGray
-                                                }}
-                                                type="Entypo"
-                                                name="plus"
-                                            />
-                                        ) : (
-                                            <View />
-                                        )}
+                                        <Icon
+                                            style={{
+                                                fontSize: 20,
+                                                color: colors.lightGray
+                                            }}
+                                            type="Entypo"
+                                            name="plus"
+                                        />
                                     </View>
                                 </View>
                             </TouchableOpacity>
                         ))}
                     </ScrollView>
-                    {canBuy ? (
+                    {(
                         <Fab
                             active={this.state.items.length > 0}
                             style={{
@@ -111,13 +103,6 @@ export default class Store extends Component {
                         >
                             <TouchableOpacity
                                 onPress={() => {
-                                    if (this.state.items.length > 0) {
-                                        navigation.navigate("Checkout", {
-                                            items: this.state.items,
-                                            store,
-                                            updateItems: this.updateItems.bind(this)
-                                        });
-                                    }
                                 }}
                             >
                                 <Icon
@@ -127,8 +112,6 @@ export default class Store extends Component {
                                 />
                             </TouchableOpacity>
                         </Fab>
-                    ) : (
-                        <View />
                     )}
                 </Container>
             </Root>

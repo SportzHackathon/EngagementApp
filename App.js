@@ -13,6 +13,7 @@ import Article from "./app/screens/Article";
 import Poll from "./app/screens/Poll";
 import Store from "./app/screens/Store";
 import Checkout from "./app/screens/Checkout";
+import RewardCategory from "./app/screens/RewardCategory"
 
 const screens = {
     Home: {
@@ -32,6 +33,9 @@ const screens = {
     },
     Checkout: {
         screen: Checkout
+    },
+    RewardCategory: {
+        screen: RewardCategory
     }
 };
 
