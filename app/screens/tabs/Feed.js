@@ -12,46 +12,49 @@ import { material } from "react-native-typography";
 const articles = [
     {
         id: 1,
-        type: "text",
-        title: "Tech Wins 69-1!",
-        snippet: "What a great game and a damn good score.",
-        content: [
-            { type: "title", content: "Tech Wins 69-1!" },
-            {
-                type: "paragraph",
-                content: { type: "text", content: "What a great game and a damn good score." }
-            },
-            {
-                type: "image",
-                content:
-                    "http://www.rentcafe.com/dmslivecafe/UploadedImages/e44a0982-d9d2-4e92-b90f-b279eaabfe53.jpg"
-            },
-            {
-                type: "paragraph",
-                content: [
-                    {
-                        type: "text",
-                        content:
-                            "Well bob, you saw what it said. What a great game and a damn good score. Officia nulla anim nulla ipsum veniam quis sunt. Exercitation laboris excepteur elit laborum aliqua anim sunt amet labore cupidatat qui aliquip. Deserunt do magna eu cupidatat sunt. Magna fugiat et labore est reprehenderit cupidatat sit ad cupidatat."
-                    },
-                    {
-                        type: "text",
-                        content:
-                            "Part 2 of this paragraph. FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO. Pariatur aute est commodo proident aute enim aliquip veniam cupidatat pariatur incididunt amet nisi sint. Deserunt proident dolore laboris deserunt deserunt labore cillum proident veniam proident excepteur in elit. In laborum consectetur ad dolore incididunt dolore. Nisi do labore reprehenderit consectetur culpa ut non in tempor anim Lorem."
-                    }
-                ]
-            },
-            {
-                type: "paragraph",
-                content: [
-                    { type: "header", content: "P2 Heading" },
-                    {
-                        type: "text",
-                        content: "Paragraph 2 baby. Look at me!!!!!!!!!!!!!!!!!!!!!!!."
-                    }
-                ]
-            }
-        ]
+        type: "link",
+        title: "Tech Wins 35-28!",
+        snippet: "Click here to watch the highlights.",
+        imageUrl:
+            "https://cdn.vox-cdn.com/thumbor/5MJ_1Yw7A7QPf_5bAntcGvY5ERo=/0x0:4680x3120/920x613/filters:focal(1558x780:2306x1528):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/62177561/usa_today_11586068.0.jpg",
+        linkUrl: "https://www.youtube.com/watch?v=f5bH5Py5h7c&feature=onebox"
+        //     content: [
+        //         { type: "title", content: "Tech Wins 69-1!" },
+        //         {
+        //             type: "paragraph",
+        //             content: { type: "text", content: "What a great game and a damn good score." }
+        //         },
+        //         {
+        //             type: "image",
+        //             content:
+        //                 "http://www.rentcafe.com/dmslivecafe/UploadedImages/e44a0982-d9d2-4e92-b90f-b279eaabfe53.jpg"
+        //         },
+        //         {
+        //             type: "paragraph",
+        //             content: [
+        //                 {
+        //                     type: "text",
+        //                     content:
+        //                         "Well bob, you saw what it said. What a great game and a damn good score. Officia nulla anim nulla ipsum veniam quis sunt. Exercitation laboris excepteur elit laborum aliqua anim sunt amet labore cupidatat qui aliquip. Deserunt do magna eu cupidatat sunt. Magna fugiat et labore est reprehenderit cupidatat sit ad cupidatat."
+        //                 },
+        //                 {
+        //                     type: "text",
+        //                     content:
+        //                         "Part 2 of this paragraph. FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO. Pariatur aute est commodo proident aute enim aliquip veniam cupidatat pariatur incididunt amet nisi sint. Deserunt proident dolore laboris deserunt deserunt labore cillum proident veniam proident excepteur in elit. In laborum consectetur ad dolore incididunt dolore. Nisi do labore reprehenderit consectetur culpa ut non in tempor anim Lorem."
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             type: "paragraph",
+        //             content: [
+        //                 { type: "header", content: "P2 Heading" },
+        //                 {
+        //                     type: "text",
+        //                     content: "Paragraph 2 baby. Look at me!!!!!!!!!!!!!!!!!!!!!!!."
+        //                 }
+        //             ]
+        //         }
+        //     ]
     },
     {
         id: 2,
