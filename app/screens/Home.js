@@ -7,7 +7,7 @@ import Feed from "./tabs/Feed";
 import Map from "./tabs/Map";
 import Stats from "./tabs/Stats";
 import Shop from "./tabs/Shop";
-import Rewards from "./tabs/Rewards";
+import FanCenter from "./tabs/FanCenter";
 import TabNavigationCreator from "../components/TabNavigation";
 
 /**
@@ -18,7 +18,7 @@ const tabs = {
     Map: { screen: Map },
     Game: { screen: Stats },
     Shop: { screen: Shop },
-    Rewards: { screen: Rewards }
+    Rewards: { screen: FanCenter }
 };
 export default TabNavigationCreator(tabs);
 

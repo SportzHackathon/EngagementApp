@@ -1,53 +1,41 @@
 /**
- * Rewards tab
+ * Fan Center tab
  */
 
+// TODO figure out how to switch between tabs and add toaast
+
 import React, { Component } from "react";
-import { StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from "react-native";
 import { Container, Header, Title, Body, Icon } from "native-base";
 import colors from "../../styles/colors";
 import { material, robotoWeights } from "react-native-typography";
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 
-const rewardCategories = [
+const rewards = [
     {
-        name: "Chick-Fil-A",
-        imgUrl: "https://pbs.twimg.com/profile_images/458694452551229440/FhyI8Y50_400x400.png",
-        items: [
-            {
-                name: "Chicken Sandwich",
-                points: 3.52
-            },
-            {
-                name: "8 count Chicken Nuggets",
-                points: 6.32
-            }
-        ]
+        name: "Chicken Sandwich",
+        points: 3.52
     },
     {
-        name: "Burdell's",
-        imgUrl:
-            "http://ramblinwreck.com/wp-content/uploads/2018/08/STH-Concession-Discount-300x300.png",
-        items: [
-            {
-                name: "Hot dog",
-                points: 3
-            },
-            {
-                name: "Pretzel",
-                points: 2
-            }
-        ]
+        name: "8 count Chicken Nuggets",
+        points: 6.32
+    },
+    {
+        name: "Hot dog",
+        points: 3
+    },
+    {
+        name: "Pretzel",
+        points: 2
     }
 ];
 
-
-export default class Rewards extends Component {
+export default class FanCenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
           selectedIndex: 0,
-          points: 50
+          points: 5
         };
       }
 
@@ -86,12 +74,20 @@ export default class Rewards extends Component {
     renderRewards() {
         return (
             <View>
-                <ScrollView keyboardShouldPersistTaps="always">
-                    {rewardCategories.map((category, index) => (
+                <ScrollView>
+                    {rewards.map((reward, index) => (
                         <TouchableOpacity
                             key={index}
                             onPress={() => {
-                                this.props.navigation.navigate("RewardCategory", { category: category });
+                                if (reward.points <= this.state.points) {
+                                    this.setState({
+                                        ...this.state,
+                                        points: this.state.points - reward.points,
+                                    });
+                                    // ADD SOME TOAST
+                                } else {
+                                    // ADD SOME TOAST
+                                }
                             }}
                         >
                             <View
@@ -106,36 +102,37 @@ export default class Rewards extends Component {
                                     borderBottomColor: colors.lightGray
                                 }}
                             >
+                                <Text
+                                    style={{
+                                        color: colors.darkGray
+                                    }}
+                                >
+                                    {reward.name}
+                                </Text>
                                 <View
                                     style={{
                                         display: "flex",
                                         flexDirection: "row",
-                                        alignItems: "center"
+                                        alignContent: "center"
                                     }}
                                 >
-                                    <Image
-                                        key={index}
-                                        source={{ uri: category.imgUrl }}
-                                        style={{ height: 50, width: 50 }}
-                                    />
                                     <Text
                                         style={{
-                                            ...material.subheadingObject,
-                                            color: colors.darkGray,
-                                            paddingLeft: 5
+                                            color: colors.gray,
+                                            paddingRight: 5
                                         }}
                                     >
-                                        {category.name}
+                                        Points: {reward.points}
                                     </Text>
+                                    <Icon
+                                        style={{
+                                            fontSize: 20,
+                                            color: colors.lightGray
+                                        }}
+                                        type="Entypo"
+                                        name="plus"
+                                    />
                                 </View>
-                                <Icon
-                                    style={{
-                                        fontSize: 20,
-                                        color: colors.lightGray
-                                    }}
-                                    type="Entypo"
-                                    name="chevron-right"
-                                />
                             </View>
                         </TouchableOpacity>
                     ))}
@@ -144,12 +141,33 @@ export default class Rewards extends Component {
         )
     }
 
+    renderInput() {
+        return (
+            <View>
+                <Text>Input Code:</Text>
+                <TextInput
+                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                onChangeText={(text) => {
+                    if (text == 'code') {
+                        this.setState({
+                        ...this.state,
+                        points: this.state.points += 50,
+                        })
+                    }
+                }}
+                value={this.state.text}
+                />
+            </View>
+
+        );
+    }
+
     render() {
         return (
             <Container>
                 <Header style={{ backgroundColor: colors.headerColor }}>
                     <Body>
-                        <Title style={{ color: colors.headerText }}>Fan Center</Title>
+                        <Title style={{ color: colors.headerText }}>Rewards Center</Title>
                     </Body>
                 </Header>
                 <View>
@@ -173,7 +191,7 @@ export default class Rewards extends Component {
                     {this.renderPoints()}
                 </View>
                 <View>
-                    {this.renderRewards()}
+                    {this.renderInput()}
                 </View>
             </Container>
         );
