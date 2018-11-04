@@ -43,6 +43,13 @@ const foodShops = [
 ];
 
 export default class Shop extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            foodShops: foodShops
+        };
+    }
+
     render() {
         return (
             <Container>
@@ -53,7 +60,7 @@ export default class Shop extends Component {
                 </Header>
                 <View>
                     <ScrollView keyboardShouldPersistTaps="always">
-                        {foodShops.map((food, index) => (
+                        {this.state.foodShops.map((food, index) => (
                             <TouchableOpacity
                                 key={index}
                                 onPress={() => {

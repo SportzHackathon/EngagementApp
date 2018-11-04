@@ -15,12 +15,19 @@ export default class Store extends Component {
         super(props);
 
         this.state = {
-            items: []
+            items: [],
+            orders: []
         };
     }
 
     updateItems(items) {
         this.setState({ items });
+    }
+
+    updateOrders(newOrder) {
+        let orders = this.state.orders;
+        orders.push(newOrder);
+        this.setState({ orders });
     }
 
     render() {
@@ -115,7 +122,8 @@ export default class Store extends Component {
                                         navigation.navigate("Checkout", {
                                             items: this.state.items,
                                             store,
-                                            updateItems: this.updateItems.bind(this)
+                                            updateItems: this.updateItems.bind(this),
+                                            updateOrders: this.updateOrders.bind(this)
                                         });
                                     }
                                 }}

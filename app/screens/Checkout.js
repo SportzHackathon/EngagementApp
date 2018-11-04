@@ -5,6 +5,7 @@ import colors from "../styles/colors";
 import { material } from "react-native-typography";
 
 const bodyMargin = 20;
+let orderNumber = 49102;
 
 export default class Checkout extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -194,7 +195,25 @@ export default class Checkout extends Component {
                             {items.map(item => item.amount).reduce((acc, amount) => acc + amount) +
                                 store.options[this.state.selectedOption].upCharge}
                         </Text>
-                        <Button>
+                        <Button
+                            onPress={() => {
+                                let order = {
+                                    items: this.state.items,
+                                    orderOption: this.state.selectedOption,
+                                    number: orderNumber++,
+                                    store,
+                                    status: "Received",
+                                    time: 7
+                                };
+                                navigation.state.params.updateOrders(order);
+
+                                navigation.pop();
+                                navigation.pop();
+                                navigation.navigate("ViewOrder", {
+                                    order
+                                });
+                            }}
+                        >
                             <Text
                                 style={{
                                     ...material.body2WhiteObject,
