@@ -14,6 +14,7 @@ import Poll from "./app/screens/Poll";
 import Store from "./app/screens/Store";
 import Checkout from "./app/screens/Checkout";
 import ViewOrder from "./app/screens/ViewOrder";
+import FanGame from "./app/screens/FanGame";
 
 const screens = {
     Home: {
@@ -36,6 +37,9 @@ const screens = {
     },
     ViewOrder: {
         screen: ViewOrder
+    },
+    FanGame: {
+        screen: FanGame
     }
 };
 
