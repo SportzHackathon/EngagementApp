@@ -5,9 +5,10 @@
 // TODO figure out how to switch between tabs and add toast
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from "react-native";
-import { Container, Header, Title, Body, Icon } from "native-base";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Button } from "react-native";
+import { Container, Header, Title, Body, Icon, Root, Toast } from "native-base";
 import colors from "../../styles/colors";
+import FeedItem from "../../components/FeedItem";
 import { material, robotoWeights } from "react-native-typography";
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 
@@ -30,12 +31,31 @@ const rewards = [
     }
 ];
 
+const trivia = [
+    {
+        id: 1,
+        content: "Should we run the triple option again/every? Hmmmmmmm",
+        options: ["Yes", "No", "Always", "Never again."],
+        actual: -1,
+        expected: 1
+    },
+    {
+        id: 2,
+        content: "Should we run the triple option again/every? Hmmmmmmm",
+        options: ["Yes", "No", "Always", "Never again."],
+        actual: -1,
+        expected: 1
+    },
+]
+
 export default class FanCenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
           selectedIndex: 0,
-          points: 5
+          points: 5,
+          code: '',
+          trivia: trivia
         };
       }
 
@@ -84,9 +104,16 @@ export default class FanCenter extends Component {
                                         ...this.state,
                                         points: this.state.points - reward.points,
                                     });
-                                    // ADD SOME TOAST
+                                    Toast.show({
+                                        text: "Bought Item!",
+                                        duration: 1500
+                                    });
                                 } else {
-                                    // ADD SOME TOAST
+                                    Toast.show({
+                                        text: "Not Enough Points!",
+                                        duration: 1500
+                                    });
+
                                 }
                             }}
                         >
@@ -143,57 +170,108 @@ export default class FanCenter extends Component {
 
     renderInput() {
         return (
-            <View>
+            <View
+            style = {{
+                margin: 15,
+                padding: 10,
+            }}>
                 <Text>Input Code:</Text>
                 <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={(text) => {
-                    if (text == 'code') {
                         this.setState({
                         ...this.state,
-                        points: this.state.points += 50,
+                        code: text
                         })
-                    }
                 }}
                 value={this.state.text}
                 />
+                <TouchableOpacity
+                    onPress={() => {
+                        if (this.state.code == 'code') {
+                            this.setState({
+                                ...this.state,
+                                points: this.state.points += 50
+                                })
+                        }
+                    }}
+                >
+                <View
+                style={{alignItems: 'flex-end'}}>
+                    <Icon
+                        name="plus-circle"
+                        type="FontAwesome"
+                    />
+                </View>
+
+                </TouchableOpacity>
             </View>
 
         );
     }
 
+    renderTrivia() {
+        return (
+            <View>
+                {trivia.map((question, index) => (
+                    <FeedItem
+                        question={question}
+                        key={index}
+                        navigation={this.props.navigation}
+                        onVote={option => {
+                            this.state.article[index].alreadyVoted = true;
+                            this.setState({ article: this.state.article });
+                        }}
+                    />
+                ))}
+            </View>
+        )
+    }
+
+    renderMain() {
+        if (this.state.selectedIndex === 0) {
+            return this.renderRewards();
+        } else if (this.state.selectedIndex === 1) {
+            return this.renderInput();
+        } else {
+            return this.renderTrivia();
+        }
+    }
+
     render() {
         return (
-            <Container>
-                <Header style={{ backgroundColor: colors.headerColor }}>
-                    <Body>
-                        <Title style={{ color: colors.headerText }}>Fan Center</Title>
-                    </Body>
-                </Header>
-                <View>
-                    <SegmentedControlTab
-                        values={['Rewards', 'Enter Code', 'Game']}
-                        selectedIndex={this.state.selectedIndex}
-                        onTabPress={this.handleIndexChange}
-                        />
-                </View>
-                <View
-                    style={{
-                        paddingTop: 5,
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                        flexWrap: "wrap",
-                        borderBottomColor: colors.lightGray,
-                        borderBottomWidth: 1
-                    }}
-                >
-                    {this.renderPoints()}
-                </View>
-                <View>
-                    {this.renderInput()}
-                </View>
-            </Container>
+            <Root>
+                <Container>
+                    <Header style={{ backgroundColor: colors.headerColor }}>
+                        <Body>
+                            <Title style={{ color: colors.headerText }}>Fan Center</Title>
+                        </Body>
+                    </Header>
+                    <View>
+                        <SegmentedControlTab
+                            values={['Rewards', 'Enter Code', 'Game']}
+                            selectedIndex={this.state.selectedIndex}
+                            onTabPress={this.handleIndexChange}
+                            />
+                    </View>
+                    <View
+                        style={{
+                            paddingTop: 5,
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-around",
+                            flexWrap: "wrap",
+                            borderBottomColor: colors.lightGray,
+                            borderBottomWidth: 1
+                        }}
+                    >
+                        {this.renderPoints()}
+                    </View>
+                    <View>
+                        {this.renderMain()}
+                    </View>
+                </Container>
+            </Root>
         );
     }
 }
