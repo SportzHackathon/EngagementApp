@@ -8,46 +8,106 @@ import { Container, Header, Body, Title } from "native-base";
 import colors from "../../styles/colors";
 import { material, robotoWeights } from "react-native-typography";
 
+// const stats = {
+//     team1: {
+//         name: "Georgia Tech",
+//         score: 66,
+//         color: colors.gold,
+//         stats: [
+//             { name: "First Downs", value: 28 },
+//             { name: "Yotal Yards", value: 554 },
+//             { name: "Rushing Yards", value: 542 },
+//             { name: "Rushing Attempts", value: 65 },
+//             { name: "Yards per Rush", value: 8.3 },
+//             { name: "Passing Yards", value: 12 },
+//             { name: "Completions", value: 1 },
+//             { name: "Pass Attempts", value: 2 },
+//             { name: "Yards per Pass", value: 6 },
+//             { name: "Turnovers", value: 0 },
+//             { name: "Fumbles", value: 0 },
+//             { name: "Interceptions", value: 0 }
+//         ]
+//     },
+//     team2: {
+//         name: "Louisville",
+//         score: 31,
+//         color: "#dd1925",
+//         stats: [
+//             { name: "First Downs", value: 23 },
+//             { name: "Yotal Yards", value: 483 },
+//             { name: "Rushing Yards", value: 113 },
+//             { name: "Rushing Attempts", value: 23 },
+//             { name: "Yards per Rush", value: 4.9 },
+//             { name: "Passing Yards", value: 370 },
+//             { name: "Completions", value: 27 },
+//             { name: "Pass Attempts", value: 44 },
+//             { name: "Yards per Pass", value: 8.4 },
+//             { name: "Turnovers", value: 1 },
+//             { name: "Fumbles", value: 2 },
+//             { name: "Interceptions", value: 1 }
+//         ]
+//     }
+// };
+
 const stats = {
     team1: {
         name: "Georgia Tech",
-        score: 66,
+        score: 38,
         color: colors.gold,
         stats: [
-            { name: "First Downs", value: 28 },
-            { name: "Yotal Yards", value: 554 },
-            { name: "Rushing Yards", value: 542 },
-            { name: "Rushing Attempts", value: 65 },
-            { name: "Yards per Rush", value: 8.3 },
-            { name: "Passing Yards", value: 12 },
-            { name: "Completions", value: 1 },
+            { name: "First Downs", value: 27 },
+            { name: "Yotal Yards", value: 565 },
+            { name: "Rushing Yards", value: 461 },
+            { name: "Rushing Attempts", value: 74 },
+            { name: "Yards per Rush", value: 6.2 },
+            { name: "Passing Yards", value: 104 },
+            { name: "Completions", value: 2 },
             { name: "Pass Attempts", value: 2 },
-            { name: "Yards per Pass", value: 6 },
-            { name: "Turnovers", value: 0 },
-            { name: "Fumbles", value: 0 },
+            { name: "Yards per Pass", value: 52 },
+            { name: "Turnovers", value: 3 },
+            { name: "Fumbles", value: 3 },
             { name: "Interceptions", value: 0 }
         ]
     },
     team2: {
-        name: "Louisville",
+        name: "North Caroline",
         score: 31,
-        color: "#dd1925",
+        color: "#99badd",
         stats: [
-            { name: "First Downs", value: 23 },
-            { name: "Yotal Yards", value: 483 },
-            { name: "Rushing Yards", value: 113 },
-            { name: "Rushing Attempts", value: 23 },
-            { name: "Yards per Rush", value: 4.9 },
-            { name: "Passing Yards", value: 370 },
-            { name: "Completions", value: 27 },
-            { name: "Pass Attempts", value: 44 },
-            { name: "Yards per Pass", value: 8.4 },
-            { name: "Turnovers", value: 1 },
-            { name: "Fumbles", value: 2 },
-            { name: "Interceptions", value: 1 }
+            { name: "First Downs", value: 19 },
+            { name: "Yotal Yards", value: 374 },
+            { name: "Rushing Yards", value: 166 },
+            { name: "Rushing Attempts", value: 36 },
+            { name: "Yards per Rush", value: 4.6 },
+            { name: "Passing Yards", value: 208 },
+            { name: "Completions", value: 18 },
+            { name: "Pass Attempts", value: 31 },
+            { name: "Yards per Pass", value: 6.7 },
+            { name: "Turnovers", value: 3 },
+            { name: "Fumbles", value: 0 },
+            { name: "Interceptions", value: 3 }
         ]
     }
 };
+
+const basketballStats = {
+    team1: {
+        name: "Georgia Tech",
+        score: 87,
+        color: colors.gold,
+        stats: [
+            { name: "Shot Efficiency", value: 43.6 }
+        ]
+    },
+    team2: {
+        name: "Florida Tech",
+        score: 36,
+        color: "#990000",
+        stats: [
+            { name: "Shot Efficiency", value: 25.2 }
+        ]
+    }
+}
 
 export default class Stats extends Component {
     renderTeam(team) {
