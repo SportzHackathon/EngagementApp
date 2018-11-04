@@ -52,19 +52,11 @@ export default class FanCenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          selectedIndex: 0,
           points: 5,
           code: '',
           trivia: trivia
         };
       }
-
-    handleIndexChange = (index) => {
-        this.setState({
-            ...this.state,
-            selectedIndex: index,
-        });
-    }
 
     renderPoints() {
         return (
@@ -93,121 +85,121 @@ export default class FanCenter extends Component {
 
     renderRewards() {
         return (
-            <View>
-                <ScrollView>
-                    {rewards.map((reward, index) => (
-                        <TouchableOpacity
-                            key={index}
-                            onPress={() => {
-                                if (reward.points <= this.state.points) {
-                                    this.setState({
-                                        ...this.state,
-                                        points: this.state.points - reward.points,
-                                    });
-                                    Toast.show({
-                                        text: "Bought Item!",
-                                        duration: 1500
-                                    });
-                                } else {
-                                    Toast.show({
-                                        text: "Not Enough Points!",
-                                        duration: 1500
-                                    });
+            <View
+            style = {
+                {}
+            }>
+                <View
+                style = {{
+                    margin: 15,
+                    padding: 10,
+                    borderBottomWidth: 1,
+                    borderBottomColor: colors.lightGray
+                }}>
+                    <Text>Input Code:</Text>
+                    <TextInput
+                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                    onChangeText={(text) => {
+                            this.setState({
+                            ...this.state,
+                            code: text
+                            })
+                    }}
+                    value={this.state.text}
+                    />
+                    <TouchableOpacity
+                        onPress={() => {
+                            if (this.state.code == 'code') {
+                                this.setState({
+                                    ...this.state,
+                                    points: this.state.points += 50
+                                    })
+                            }
+                        }}
+                    >
+                    <View
+                    style={{alignItems: 'flex-end'}}>
+                        <Icon
+                            name="plus-circle"
+                            type="FontAwesome"
+                        />
+                    </View>
+                    </TouchableOpacity>
+                </View>
 
-                                }
-                            }}
-                        >
-                            <View
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    alignContent: "center",
-                                    padding: 14,
-                                    borderBottomWidth: 1,
-                                    borderBottomColor: colors.lightGray
+                    <ScrollView
+                    style={{height: 40}}>
+                        {rewards.map((reward, index) => (
+                            <TouchableOpacity
+                                key={index}
+                                onPress={() => {
+                                    if (reward.points <= this.state.points) {
+                                        this.setState({
+                                            ...this.state,
+                                            points: this.state.points - reward.points,
+                                        });
+                                        Toast.show({
+                                            text: "Bought Item!",
+                                            duration: 1500
+                                        });
+                                    } else {
+                                        Toast.show({
+                                            text: "Not Enough Points!",
+                                            duration: 1500
+                                        });
+
+                                    }
                                 }}
                             >
-                                <Text
-                                    style={{
-                                        color: colors.darkGray
-                                    }}
-                                >
-                                    {reward.name}
-                                </Text>
                                 <View
                                     style={{
                                         display: "flex",
+                                        justifyContent: "space-between",
                                         flexDirection: "row",
-                                        alignContent: "center"
+                                        alignItems: "center",
+                                        alignContent: "center",
+                                        padding: 14,
+                                        borderBottomWidth: 1,
+                                        borderBottomColor: colors.lightGray
                                     }}
                                 >
                                     <Text
                                         style={{
-                                            color: colors.gray,
-                                            paddingRight: 5
+                                            color: colors.darkGray
                                         }}
                                     >
-                                        Points: {reward.points}
+                                        {reward.name}
                                     </Text>
-                                    <Icon
+                                    <View
                                         style={{
-                                            fontSize: 20,
-                                            color: colors.lightGray
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            alignContent: "center"
                                         }}
-                                        type="Entypo"
-                                        name="plus"
-                                    />
+                                    >
+                                        <Text
+                                            style={{
+                                                color: colors.gray,
+                                                paddingRight: 5
+                                            }}
+                                        >
+                                            Points: {reward.points}
+                                        </Text>
+                                        <Icon
+                                            style={{
+                                                fontSize: 20,
+                                                color: colors.lightGray
+                                            }}
+                                            type="Entypo"
+                                            name="plus"
+                                        />
+                                    </View>
                                 </View>
-                            </View>
-                        </TouchableOpacity>
-                    ))}
-                </ScrollView>
+                            </TouchableOpacity>
+                        ))}
+                    </ScrollView>
             </View>
         )
-    }
-
-    renderInput() {
-        return (
-            <View
-            style = {{
-                margin: 15,
-                padding: 10,
-            }}>
-                <Text>Input Code:</Text>
-                <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                onChangeText={(text) => {
-                        this.setState({
-                        ...this.state,
-                        code: text
-                        })
-                }}
-                value={this.state.text}
-                />
-                <TouchableOpacity
-                    onPress={() => {
-                        if (this.state.code == 'code') {
-                            this.setState({
-                                ...this.state,
-                                points: this.state.points += 50
-                                })
-                        }
-                    }}
-                >
-                <View
-                style={{alignItems: 'flex-end'}}>
-                    <Icon
-                        name="plus-circle"
-                        type="FontAwesome"
-                    />
-                </View>
-
-                </TouchableOpacity>
-            </View>
-
-        );
     }
 
     renderTrivia() {
@@ -228,16 +220,6 @@ export default class FanCenter extends Component {
         )
     }
 
-    renderMain() {
-        if (this.state.selectedIndex === 0) {
-            return this.renderRewards();
-        } else if (this.state.selectedIndex === 1) {
-            return this.renderInput();
-        } else {
-            return this.renderTrivia();
-        }
-    }
-
     render() {
         return (
             <Root>
@@ -247,28 +229,19 @@ export default class FanCenter extends Component {
                             <Title style={{ color: colors.headerText }}>Fan Center</Title>
                         </Body>
                     </Header>
-                    <View>
-                        <SegmentedControlTab
-                            values={['Rewards', 'Enter Code', 'Game']}
-                            selectedIndex={this.state.selectedIndex}
-                            onTabPress={this.handleIndexChange}
-                            />
-                    </View>
                     <View
                         style={{
                             paddingTop: 5,
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "space-around",
-                            flexWrap: "wrap",
-                            borderBottomColor: colors.lightGray,
-                            borderBottomWidth: 1
+                            flexWrap: "wrap"
                         }}
                     >
                         {this.renderPoints()}
                     </View>
                     <View>
-                        {this.renderMain()}
+                        {this.renderRewards()}
                     </View>
                 </Container>
             </Root>
