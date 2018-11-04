@@ -4,7 +4,7 @@
 
 import React, { Component } from "react";
 import { StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from "react-native";
-import { Container, Header, Title, Body, Icon } from "native-base";
+import { Container, Header, Title, Body, Icon, Right, Button } from "native-base";
 import colors from "../../styles/colors";
 import { material } from "react-native-typography";
 
@@ -46,8 +46,15 @@ export default class Shop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            foodShops: foodShops
+            foodShops: foodShops,
+            orders: []
         };
+    }
+
+    updateOrders(newOrder) {
+        let orders = this.state.orders;
+        orders.push(newOrder);
+        this.setState({ orders });
     }
 
     render() {
@@ -57,6 +64,23 @@ export default class Shop extends Component {
                     <Body>
                         <Title style={{ color: colors.headerText }}>Shop</Title>
                     </Body>
+                    <Right>
+                        {this.state.orders.length > 0 ? (
+                            <Button
+                                hasText
+                                transparent
+                                onPress={() => {
+                                    this.props.navigation.navigate("ViewOrder", {
+                                        order: this.state.orders[this.state.orders.length - 1]
+                                    });
+                                }}
+                            >
+                                <Text>View Order</Text>
+                            </Button>
+                        ) : (
+                            <View />
+                        )}
+                    </Right>
                 </Header>
                 <View>
                     <ScrollView keyboardShouldPersistTaps="always">
@@ -64,7 +88,10 @@ export default class Shop extends Component {
                             <TouchableOpacity
                                 key={index}
                                 onPress={() => {
-                                    this.props.navigation.navigate("Store", { store: food });
+                                    this.props.navigation.navigate("Store", {
+                                        store: food,
+                                        updateOrders: this.updateOrders.bind(this)
+                                    });
                                 }}
                             >
                                 <View
