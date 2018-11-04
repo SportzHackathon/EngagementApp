@@ -2,7 +2,7 @@
  * Fan Center tab
  */
 
-// TODO figure out how to switch between tabs and add toaast
+// TODO figure out how to switch between tabs and add toast
 
 import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from "react-native";
@@ -167,12 +167,12 @@ export default class FanCenter extends Component {
             <Container>
                 <Header style={{ backgroundColor: colors.headerColor }}>
                     <Body>
-                        <Title style={{ color: colors.headerText }}>Rewards Center</Title>
+                        <Title style={{ color: colors.headerText }}>Fan Center</Title>
                     </Body>
                 </Header>
                 <View>
                     <SegmentedControlTab
-                        values={['Rewards', 'Enter Code']}
+                        values={['Rewards', 'Enter Code', 'Game']}
                         selectedIndex={this.state.selectedIndex}
                         onTabPress={this.handleIndexChange}
                         />
