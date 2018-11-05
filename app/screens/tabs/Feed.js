@@ -16,7 +16,7 @@ const articles = [
         content: "Should Oliver become the new starting quarterback?",
         options: ["Yes", "No"],
         alreadyVoted: false,
-        votes: [47, 53],
+        votes: [47, 53]
     },
     {
         id: 2,
@@ -69,37 +69,47 @@ const articles = [
         type: "text",
         title: "Benson Out for the Season",
         snippet: "Details on KiVonte Benson's Injury",
-            content: [
-                { type: "title", content: "Benson's Injury Update" },
-                {
-                    type: "paragraph",
-                    content: [{ type: "text", content: "Georgia Tech's starting B-back KirVonte Benson suffered a kneww injury during the game against USF, Paul Johnson said. Benson hurt his left knee in the first quarter and didn't return to the game. His loss is a failry signifcant one for the Jackets. Benson rushed for 1,053 yards last seaon." },
-                    { type: "text", content: "'I feel terrible for him because he's worked hard,' Johnson said. 'He'll be back. He's a strong kid.'"}]
-                }
-            ]
+        content: [
+            { type: "title", content: "Benson's Injury Update" },
+            {
+                type: "paragraph",
+                content: [
+                    {
+                        type: "text",
+                        content:
+                            "Georgia Tech's starting B-back KirVonte Benson suffered a kneww injury during the game against USF, Paul Johnson said. Benson hurt his left knee in the first quarter and didn't return to the game. His loss is a failry signifcant one for the Jackets. Benson rushed for 1,053 yards last seaon."
+                    },
+                    {
+                        type: "text",
+                        content:
+                            "'I feel terrible for him because he's worked hard,' Johnson said. 'He'll be back. He's a strong kid.'"
+                    }
+                ]
+            }
+        ]
     },
-    {
-        id: 4,
-        type: "poll",
-        content: "Should we run the triple option again/every? Hmmmmmmm",
-        options: ["Yes", "No", "Always", "Never again."],
-        alreadyVoted: false,
-        votes: [60, 20, 20, 0],
-        imageUrl:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/64px-Google_Chrome_icon_%28September_2014%29.svg.png"
-    },
-    {
-        id: 5,
-        type: "text",
-        title: "Beautiful day in the neighborhood",
-        snippet: "Bobby Dodd is looking awfully nice tonight mkay",
-        content: "Well bob, you saw what it said. Bobby Dodd is looking awfully nice tonight mkay"
-    },
+    // {
+    //     id: 4,
+    //     type: "poll",
+    //     content: "Should we run the triple option again/every? Hmmmmmmm",
+    //     options: ["Yes", "No", "Always", "Never again."],
+    //     alreadyVoted: false,
+    //     votes: [60, 20, 20, 0],
+    //     imageUrl:
+    //         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/64px-Google_Chrome_icon_%28September_2014%29.svg.png"
+    // },
+    // {
+    //     id: 5,
+    //     type: "text",
+    //     title: "Beautiful day in the neighborhood",
+    //     snippet: "Bobby Dodd is looking awfully nice tonight mkay",
+    //     content: "Well bob, you saw what it said. Bobby Dodd is looking awfully nice tonight mkay"
+    // },
     {
         id: 6,
         type: "image",
-        title: "Beautiful day in the neighborhood",
-        snippet: "Bobby Dodd is looking awfully nice tonight mkay",
+        title: "Beautiful night at Bobby Dodd",
+        snippet: "Come out and enjoy our next game!",
         content: "Well bob, you saw what it said. Bobby Dodd is looking awfully nice tonight mkay",
         imageUrl:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/BobbyDoddStadiumGTMiami2008.jpg/1200px-BobbyDoddStadiumGTMiami2008.jpg"

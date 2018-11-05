@@ -54,23 +54,27 @@ const rewards = [
 ];
 
 const game = {
-    name: "Song Game",
+    name: "Sample Game",
     questions: [
         {
             question: "Name this song!",
-            options: ["The middle", "Psycho killer", "Crazy love", "We will rock you"]
+            options: ["The middle", "Psycho killer", "Crazy love", "We will rock you"],
+            correct: 2
         },
         {
-            question: "Name this song!",
-            options: ["The middle", "Psycho killer", "Crazy love", "We will rock you"]
+            question: "What year was Georgia Tech founded?",
+            options: ["1862", "1849", "1885", "1904"],
+            correct: 2
         },
         {
-            question: "Name this song!",
-            options: ["The middle", "Psycho killer", "Crazy love", "We will rock you"]
+            question: "What was our basketball team's record Coach Pastner's first season?",
+            options: ["19-18", "21-16", "25-12", "0-37"],
+            correct: 1
         },
         {
-            question: "Name this song!",
-            options: ["The middle", "Psycho killer", "Crazy love", "We will rock you"]
+            question: "What type of car is the Ramblin' Wreck?",
+            options: ["Model A Ford", "Model T Ford", "Nissan Ultima"],
+            correct: 0
         }
     ]
 };

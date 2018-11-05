@@ -28,7 +28,8 @@ export default class FanGame extends Component {
 
         this.state = {
             questionNumber: 0,
-            selected: -1
+            selected: -1,
+            numCorrect: 0
         };
     }
 
@@ -40,6 +41,9 @@ export default class FanGame extends Component {
 
         return (
             <View>
+                <Text style={{ margin: screenMargin }}>
+                    {game.questions[this.state.questionNumber].question}
+                </Text>
                 {question.options.map((option, index) => (
                     <View
                         key={index}
@@ -69,9 +73,14 @@ export default class FanGame extends Component {
                 ))}
                 <Button
                     onPress={() => {
+                        let correct = this.state.numCorrect;
+                        if (this.state.selected === question.correct) {
+                            correct++;
+                        }
                         this.setState({
-                            questionNumber: this.state.questionNumber++,
-                            selected: -1
+                            questionNumber: this.state.questionNumber + 1,
+                            selected: -1,
+                            numCorrect: correct
                         });
                     }}
                     {...buttonType}
@@ -87,21 +96,19 @@ export default class FanGame extends Component {
     renderResults() {
         return (
             <View style={styles.resultsContainer}>
-                <Text>You got none right :P</Text>
+                <Text>You got {this.state.numCorrect} correct!</Text>
             </View>
         );
     }
 
     render() {
         let { game } = this.props.navigation.state.params;
-        console.log(game);
+        console.log(this.state.questionNumber);
+        console.log(game.questions.length);
         return (
             <ScrollView style={{ backgroundColor: "#fff" }}>
                 <Body style={{ width: "100%", display: "flex", alignItems: "flex-start" }}>
-                    <Text style={{ margin: screenMargin }}>
-                        {game.questions[this.state.questionNumber].question}
-                    </Text>
-                    {this.state.selected >= game.questions.length
+                    {this.state.questionNumber >= game.questions.length
                         ? this.renderResults()
                         : this.renderPoll()}
                 </Body>

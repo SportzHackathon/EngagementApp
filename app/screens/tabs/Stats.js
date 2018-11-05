@@ -70,7 +70,7 @@ const stats = {
         ]
     },
     team2: {
-        name: "North Caroline",
+        name: "North Carolina",
         score: 31,
         color: "#99badd",
         stats: [
@@ -95,19 +95,15 @@ const basketballStats = {
         name: "Georgia Tech",
         score: 87,
         color: colors.gold,
-        stats: [
-            { name: "Shot Efficiency", value: 43.6 }
-        ]
+        stats: [{ name: "Shot Efficiency", value: 43.6 }]
     },
     team2: {
         name: "Florida Tech",
         score: 36,
         color: "#990000",
-        stats: [
-            { name: "Shot Efficiency", value: 25.2 }
-        ]
+        stats: [{ name: "Shot Efficiency", value: 25.2 }]
     }
-}
+};
 
 export default class Stats extends Component {
     renderTeam(team) {
